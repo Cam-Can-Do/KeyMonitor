@@ -1,24 +1,37 @@
-from keylog import keylog
+import sys
+from keymon import keyMon
 
-def main():
-    log = keylog()
+def main(argc, argv):
+    log = keyMon()
+
+    if argc > 1:
+        for arg in argv[1:]:
+            if arg == 'r':
+                log.run()
+            else:
+                log.import_file(arg)
 
     menu = True
     while menu:
-        print("keykiller menu options || 1 - run, 2 - input banword, 3 - input banwords from txt file, q - quit ||")
+        print("""
+        ==================================================================
+        KEYMON MENU
+           1 - run, 2 - input trigger, 3 - input triggers from txt file   
+                      p - print active triggers, q - quit
+        ==================================================================
+        """)
         choice = input()
-        if choice == "q":
-            menu = False
-        elif choice == "1":
+        if choice == "1":
             menu = False
             log.run()
         elif choice == "2":
-            log.input_bword(input())
+            log.add_trigger((input("trigger: ").lower()).strip())
         elif choice == "3":
-            file_path = input("input file path: ")
-            with open(file_path, 'r', encoding="utf-8") as file:
-                read_data = file.read()
-
+            log.import_file(input("input file path: "))
+        elif choice == "p":
+            log.print_triggers()
+        elif choice == "q":
+            menu = False
         else:
             print("Invalid input.")
 
@@ -26,4 +39,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(len(sys.argv), sys.argv)
