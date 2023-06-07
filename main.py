@@ -35,7 +35,7 @@ def main(argc, argv):
         else:
             print("Invalid input.")
 
-    print("End!")
+    print("Program ended.")
 
 
 if __name__ == "__main__":

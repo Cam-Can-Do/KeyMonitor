@@ -36,7 +36,7 @@ class keyMon():
 
     def import_file(self, file_path):
         try:
-            with open(file_path, 'r', encoding="utf-7") as file:
+            with open(file_path, 'r', encoding="utf-8") as file:
                 file_lines = file.readlines()
                 for line in file_lines:
                     words = line.split(' ')
