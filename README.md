@@ -1,4 +1,5 @@
 # KeyMonitor
+A twist on a typical keylogger: 
 Python program to monitor keyboard input for prespecified "trigger" words, using Pynput. 
 Upon trigger the program will shut down the computer.
 
